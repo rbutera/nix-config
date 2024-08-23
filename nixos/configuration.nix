@@ -110,12 +110,6 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
-  # OpenGL
-  hardware.graphics = {
-    enable = true;
-  };
-
-  
   networking.networkmanager.enable = true;
   networking.hostName = "lancelot";
 
