@@ -334,7 +334,6 @@
     ntfs3g
     fuse
     bun
-    pnpm
     xclip
     stow
 
