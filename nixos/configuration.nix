@@ -86,11 +86,12 @@
       nix-path = config.nix.nixPath;
       auto-optimise-store = true;
 
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-      };
+      # TODO: fix this
+      # gc = {
+      #   automatic = true;
+      #   dates = "weekly";
+      #   options = "--delete-older-than 7d";
+      # };
     };
     # Opinionated: disable channels
     channel.enable = false;
@@ -256,7 +257,7 @@
 
     # development
     asdf-vm
-    typescript-language-server
+    nodePackages.typescript-language-server
     nil
     go
     wl-clipboard
@@ -340,15 +341,16 @@
     # LSPs
     rust-analyzer
     lua-language-server
+    nodePackages.vue-language-server
     pyright
     tailwindcss
-    svelte-language-server
-    yaml-language-server
+    nodePackages.svelte-language-server
+    nodePackages.yaml-language-server
     gopls
     gleam
-    json-language-server
-    bash-language-server
-    coc-tsserver
+    nodePackages.vscode-json-languageserver
+    nodePackages.bash-language-server
+    nodePackages.coc-tsserver
     prettierd
 
 
@@ -444,8 +446,8 @@
     libsForQt5.qt5.qtquickcontrols
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.qt5.qt5ct
-    libsForQt5.qt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum
     kdePackages.qtstyleplugin-kvantum
     kdePackages.qt6ct
     kdePackages.wayland
