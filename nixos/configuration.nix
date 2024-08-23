@@ -267,7 +267,7 @@
     boost
     broot
     caddy
-    cario
+    cairo
     ctags
     fb303
     fbthrift
