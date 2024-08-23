@@ -119,8 +119,10 @@
   networking.networkmanager.enable = true;
   networking.hostName = "lancelot";
 
-  # drivers
-  drivers.amdgpu.enable = true;
+
+  # for AMD drivers
+  systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # for windows compatibility
   time.hardwareClockInLocalTime = true;
@@ -179,7 +181,11 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = ["networkmanager" "wheel" "libvirtd" "scanner" "lp"];
+      shell = pkgs.zsh;
+      # TODO: find out what this is
+      ignoreShellProgramCheck = true;
+
     };
   };
 
@@ -253,13 +259,6 @@
     nix-search-cli
     
     # personal
-    floorp
-    vivaldi
-    spotify
-    kanata
-    steam
-    gh
-    chezmoi
 
     # development
     asdf-vm
