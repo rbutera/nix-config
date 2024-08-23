@@ -58,20 +58,12 @@
         modules = [
           # > Our main nixos configuration file <
           ./nixos/configuration.nix
-        ];
-      };
-    };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#rai@lancelot'
-    homeConfigurations = {
-      # FIXME replace with your username@hostname
-      "rai@lancelot" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          # > Our main home-manager configuration file <
-          ./home-manager/home.nix
+          home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.rai = import ./home-manager/home.nix;
+            }
         ];
       };
     };

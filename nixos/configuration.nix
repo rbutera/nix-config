@@ -256,6 +256,8 @@
     # personal
 
     # development
+    ## TODO: remove this once we have astronvim working
+    lunarvim
     asdf-vm
     nodePackages.typescript-language-server
     nil
@@ -473,6 +475,24 @@
     lato
     roboto
   ];
+
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = ["rai"];
+  };
+
+  environment.etc = {
+      "1password/custom_allowed_browsers" = {
+        text = ''
+          vivaldi-bin
+          wavebox
+          floorp
+        '';
+        mode = "0755";
+      };
+  };
+
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.05";

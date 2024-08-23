@@ -77,9 +77,6 @@
     flake = "/home/rai/nix-config";
   };
 
-  programs._1password.enable = true;
-  programs._1password-gui.enable = true;
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
